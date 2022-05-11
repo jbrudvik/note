@@ -14,14 +14,14 @@ func main() {
 		Name: "note",
 		Usage: "Append to latest Apple Notes note",
 		ArgsUsage: "<text to append>",
-		Description: "Ignores shared notes",
+		Description: "Ignores shared notes. Formats as new line by default.",
 		HideHelpCommand: true,
-		Version: "v0.0.1",
+		Version: "v0.0.2",
 		Flags: []cli.Flag {
 		  &cli.BoolFlag{
-			Name: "body",
+			Name: "bulleted",
 			Aliases: []string{"b"},
-			Usage: "Format text as \"body\" instead of bulleted list item",
+			Usage: "Format text as bulleted list item",
 		  },
 		},
 		Action: func(c *cli.Context) error {
@@ -29,7 +29,7 @@ func main() {
 				cli.ShowAppHelpAndExit(c, 1)
 			}
 			text := strings.Join(c.Args().Slice(), " ")
-			if !c.Bool("body") {
+			if c.Bool("bulleted") {
 				text = "- " + text
 			}
 		    fmt.Println(text)
