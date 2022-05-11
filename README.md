@@ -2,9 +2,14 @@
 
 Append to latest Apple Notes note
 
-## Usage
+## Install
 
 ```
 $ go install
-$ note -h
+```
+
+## Learn how to use
+
+```
+$ note
 ```
