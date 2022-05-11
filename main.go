@@ -10,6 +10,8 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
+const scriptFile string = "append_to_note.scpt"
+
 func main() {
 	app := &cli.App{
 		Name:            "note",
@@ -29,18 +31,29 @@ func main() {
 			if c.Args().Len() < 1 {
 				cli.ShowAppHelpAndExit(c, 1)
 			}
+
+			// Get all text
 			text := strings.Join(c.Args().Slice(), " ")
+
+			// Format text
 			if c.Bool("bulleted") {
-				text = "- " + text
+				text = "<ul><li>" + text + "</li></ul>"
+			} else {
+				text = "<div>" + text + "</div>"
 			}
-			// TODO: Remove
-			fmt.Println(text)
 
-			cmd := exec.Command("osascript", "append_to_note.scpt")
-			_, err := cmd.Output()
-
+			// Get AppleScript
+			scriptData, err := os.ReadFile(scriptFile)
 			if err != nil {
-				fmt.Println("Failed to write: " + err.Error())
+				fmt.Fprintln(os.Stderr, "Could not read AppleScript template: "+err.Error())
+			}
+			scriptString := string(scriptData)
+
+			// Execute AppleScript
+			cmd := exec.Command("osascript", "-e", scriptString, text)
+			_, err = cmd.Output()
+			if err != nil {
+				fmt.Fprintln(os.Stderr, "Failed to run AppleScript to write to note: "+err.Error())
 				return nil
 			}
 
