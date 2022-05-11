@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 	"strings"
 
 	"github.com/urfave/cli/v2"
@@ -11,18 +12,18 @@ import (
 
 func main() {
 	app := &cli.App{
-		Name: "note",
-		Usage: "Append to latest Apple Notes note",
-		ArgsUsage: "<text to append>",
-		Description: "Ignores shared notes. Formats as new line by default.",
+		Name:            "note",
+		Usage:           "Append to latest Apple Notes note",
+		ArgsUsage:       "<text to append>",
+		Description:     "Ignores shared notes. Formats as new line by default.",
 		HideHelpCommand: true,
-		Version: "v0.0.2",
-		Flags: []cli.Flag {
-		  &cli.BoolFlag{
-			Name: "bulleted",
-			Aliases: []string{"b"},
-			Usage: "Format text as bulleted list item",
-		  },
+		Version:         "v0.0.2",
+		Flags: []cli.Flag{
+			&cli.BoolFlag{
+				Name:    "bulleted",
+				Aliases: []string{"b"},
+				Usage:   "Format text as bulleted list item",
+			},
 		},
 		Action: func(c *cli.Context) error {
 			if c.Args().Len() < 1 {
@@ -32,13 +33,23 @@ func main() {
 			if c.Bool("bulleted") {
 				text = "- " + text
 			}
-		    fmt.Println(text)
-		    return nil
+			// TODO: Remove
+			fmt.Println(text)
+
+			cmd := exec.Command("osascript", "append_to_note.scpt")
+			_, err := cmd.Output()
+
+			if err != nil {
+				fmt.Println("Failed to write: " + err.Error())
+				return nil
+			}
+
+			return nil
 		},
-	  }
-	
-	  err := app.Run(os.Args)
-	  if err != nil {
+	}
+
+	err := app.Run(os.Args)
+	if err != nil {
 		log.Fatal(err)
-	  }
+	}
 }
