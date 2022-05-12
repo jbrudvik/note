@@ -1,6 +1,6 @@
 # note
 
-Append to latest Apple Notes note
+Append to latest unshared Apple Notes note
 
 ## Install
 
