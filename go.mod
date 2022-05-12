@@ -1,4 +1,4 @@
-module note
+module github.com/jbrudvik/note
 
 go 1.18
 
