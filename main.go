@@ -10,7 +10,7 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-const scriptFile string = "append_to_note.scpt"
+const scriptFile string = "append_to_latest_unshared_note.scpt"
 
 func main() {
 	app := &cli.App{
