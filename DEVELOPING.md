@@ -30,4 +30,5 @@ Releases are manually created with these steps:
 1. Increment the version in `./main.go`
 1. [Draft a new release](https://github.com/jbrudvik/note/releases/new) with a new tag that matches the version from the previous step
 1. Build Mac binary (`go build`), then attach it `./note` to the draft release
+1. Add release notes
 1. Publish the release
