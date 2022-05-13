@@ -7,7 +7,7 @@
 
 ## Before committing
 
-```
+```sh
 $ go fmt
 $ go test  # All tests must pass
 ```
