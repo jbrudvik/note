@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "embed"
 	"fmt"
 	"log"
 	"os"
@@ -10,7 +11,8 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-const scriptFile string = "append_to_latest_unshared_note.scpt"
+//go:embed append_to_latest_unshared_note.scpt
+var appleScript string
 
 func main() {
 	app := &cli.App{
@@ -32,26 +34,17 @@ func main() {
 				cli.ShowAppHelpAndExit(c, 1)
 			}
 
-			// Get all text
+			// Get all text input and format it
 			text := strings.Join(c.Args().Slice(), " ")
-
-			// Format text
 			if c.Bool("bulleted") {
 				text = "<ul><li>" + text + "</li></ul>"
 			} else {
 				text = "<div>" + text + "</div>"
 			}
 
-			// Get AppleScript
-			scriptData, err := os.ReadFile(scriptFile)
-			if err != nil {
-				fmt.Fprintln(os.Stderr, "Could not read AppleScript template: "+err.Error())
-			}
-			scriptString := string(scriptData)
-
 			// Execute AppleScript
-			cmd := exec.Command("osascript", "-e", scriptString, text)
-			_, err = cmd.Output()
+			cmd := exec.Command("osascript", "-e", appleScript, text)
+			_, err := cmd.Output()
 			if err != nil {
 				fmt.Fprintln(os.Stderr, "Failed to run AppleScript to write to note: "+err.Error())
 				return nil
