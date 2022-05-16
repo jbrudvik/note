@@ -37,9 +37,7 @@ func main() {
 			// Get all text input and format it
 			text := strings.Join(c.Args().Slice(), " ")
 			if c.Bool("bulleted") {
-				text = "<ul><li>" + text + "</li></ul>"
-			} else {
-				text = "<div>" + text + "</div>"
+				text = "b " + text
 			}
 
 			// Execute AppleScript
