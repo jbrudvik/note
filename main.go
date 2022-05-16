@@ -18,7 +18,7 @@ func main() {
 	app := &cli.App{
 		Name:            "note",
 		Usage:           "Append to latest Apple Notes note",
-		ArgsUsage:       "<text to append>",
+		ArgsUsage:       "\"Text to append\"",
 		Description:     "Ignores shared notes. Formats as new line by default.",
 		HideHelpCommand: true,
 		Version:         "v0.0.6",
