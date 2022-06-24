@@ -1,6 +1,6 @@
 # note
 
-A command-line tool to append to the latest unshared Apple Notes note
+A CLI to append to the latest unshared Apple Notes note
 
 ## Usage
 
