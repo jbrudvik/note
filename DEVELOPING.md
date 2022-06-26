@@ -1,10 +1,5 @@
 # Developing
 
-## Overview
-
-- No pull requests. Just commit to main. Until there are collaborators.
-- No squash commits needed
-
 ## Before committing
 
 ```sh
