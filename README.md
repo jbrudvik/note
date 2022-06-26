@@ -30,7 +30,7 @@ GLOBAL OPTIONS:
 ### With Go
 
 ```sh
-$ go install github.com/jbrudvik/note
+$ go install github.com/jbrudvik/note@latest
 ```
 
 ### With pre-built Mac binary
