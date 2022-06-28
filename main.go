@@ -21,7 +21,7 @@ func main() {
 		ArgsUsage:       "\"Text to append\"",
 		Description:     "Ignores shared notes. Formats as new line by default.",
 		HideHelpCommand: true,
-		Version:         "v0.0.7",
+		Version:         "v0.0.8",
 		Flags: []cli.Flag{
 			&cli.BoolFlag{
 				Name:    "bulleted",
