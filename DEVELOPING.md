@@ -22,4 +22,7 @@ Please note that the formatting of the text (as HTML) is set in the containing G
 ## Releasing
 
 1. Ensure code is formatted (`gofmt -d .`) and tests are passing (`go test ./...`)
-1. [Create a new release](https://github.com/jbrudvik/note/releases/new) with new version
+1. [Create a new release](https://github.com/jbrudvik/note/releases/new) with:
+   - Version: Incremented in format: vX.Y.Z
+   - Release title: note `<version-from-last-step>`
+   - Release notes
