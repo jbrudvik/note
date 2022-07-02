@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"os/exec"
+	"runtime/debug"
 	"strings"
 
 	"github.com/urfave/cli/v2"
@@ -14,6 +15,8 @@ import (
 //go:embed append_to_latest_unshared_note.scpt
 var appleScript string
 
+var Version string = getVersion()
+
 func main() {
 	app := &cli.App{
 		Name:            "note",
@@ -21,7 +24,7 @@ func main() {
 		ArgsUsage:       "\"Text to append\"",
 		Description:     "Ignores shared notes. Formats as new line by default.",
 		HideHelpCommand: true,
-		Version:         "v0.0.8",
+		Version:         Version,
 		Flags: []cli.Flag{
 			&cli.BoolFlag{
 				Name:    "bulleted",
@@ -56,4 +59,13 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func getVersion() string {
+	info, _ := debug.ReadBuildInfo()
+	version := info.Main.Version
+	if version == "" {
+		version = "(devel)"
+	}
+	return version
 }
