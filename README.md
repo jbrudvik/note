@@ -14,7 +14,7 @@ USAGE:
    note [global options] "Text to append"
 
 VERSION:
-   v0.0.7
+   vX.Y.Z
 
 DESCRIPTION:
    Ignores shared notes. Formats as new line by default.
