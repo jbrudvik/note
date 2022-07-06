@@ -35,7 +35,7 @@ Please note that the formatting of the text (as HTML) is set in the containing G
 
 ## Releasing
 
-1. Ensure build is passing: [![Build](https://github.com/jbrudvik/gmc/actions/workflows/build.yml/badge.svg)](https://github.com/jbrudvik/gmc/actions/workflows/build.yml)
+1. Ensure build is passing: [![Build](https://github.com/jbrudvik/note/actions/workflows/build.yml/badge.svg)](https://github.com/jbrudvik/gmc/actions/workflows/build.yml)
 1. [Create a new release](https://github.com/jbrudvik/note/releases/new) with:
    - Version: Incremented in format: vX.Y.Z
    - Release title: note `<version-from-last-step>`
