@@ -27,6 +27,12 @@ GLOBAL OPTIONS:
 
 ## Install
 
+### Required dependencies
+
+- [Go 1.18](https://go.dev/doc/install)
+
+### Install note
+
 ```sh
 $ go install github.com/jbrudvik/note@latest
 ```
