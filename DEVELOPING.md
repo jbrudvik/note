@@ -1,10 +1,24 @@
 # Developing
 
+## Required dependencies
+
+- [Go 1.18](https://go.dev/doc/install)
+- [goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports): `$ go install golang.org/x/tools/cmd/goimports@latest`
+
 ## Before committing
 
 ```sh
-$ go fmt
-$ go test ./... # All tests must pass
+# Format all code correctly
+$ goimports -w .
+
+# Ensure code builds succesfully
+$ go build
+
+# Ensure code is free of common mistakes
+$ go vet ./...
+
+# Ensure all tests pass
+$ go test ./...
 ```
 
 ## Manual testing
