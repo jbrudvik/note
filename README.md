@@ -2,6 +2,8 @@
 
 A CLI to append to the latest unshared Apple Notes note
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/jbrudvik/note.svg)](https://pkg.go.dev/github.com/jbrudvik/note)
+
 ## Usage
 
 ```sh
