@@ -15,7 +15,7 @@ jobs:
       - name: Format
         run: output=$(goimports -d .); echo -n $output; test -z $output
       - name: Build
-        run: go vet ./...
+        run: go build
       - name: Lint
         run: go vet ./...
       - name: Test
