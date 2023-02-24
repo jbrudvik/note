@@ -31,7 +31,7 @@ GLOBAL OPTIONS:
 
 ### Required dependencies
 
-- [Go 1.18](https://go.dev/doc/install)
+- [Go 1.20](https://go.dev/doc/install)
 
 ### Install note
 

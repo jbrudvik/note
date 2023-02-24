@@ -1,6 +1,6 @@
 module github.com/jbrudvik/note
 
-go 1.18
+go 1.20
 
 require github.com/urfave/cli/v2 v2.4.0
 
